@@ -148,6 +148,8 @@ def chk(update,context):
     tic = time.perf_counter()
     wdia ='❌'
     crs = '➟'
+    vs="True ❌"
+    #############################
     text =  update.message.text.split(' ', 1)
     maintxt=text[-1]
     i=maintxt.split("|")
@@ -183,10 +185,10 @@ def chk(update,context):
     #if 'card' not in w:
      #  w['card']['three_d_secure_usage']['supported'] = False
       # vs ="False"
-    if w['card']['three_d_secure_usage']['supported'] == False:
-       vs ="False ✅"
-    else:
-       vs="True ❌"
+    #if w['card']['three_d_secure_usage']['supported'] == False:
+      # vs ="False ✅"
+    #else:
+       #vs="True ❌"
 
     #second request
     url = 'https://api.stripe.com/v1/payment_intents'
