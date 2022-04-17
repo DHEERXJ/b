@@ -180,9 +180,9 @@ def chk(update,context):
 {wdia} SK-key expired {crs} Change SK key \n Sk-key {crs} <code>{skmains}</code> \n RESPONSE {crs} Testmode Charges Only \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
         Sendmessage(chat_id , text)
-    if 'card' not in w:
-       w['card']['three_d_secure_usage']['supported'] = False
-       vs ="False"
+    #if 'card' not in w:
+     #  w['card']['three_d_secure_usage']['supported'] = False
+      # vs ="False"
     if w['card']['three_d_secure_usage']['supported'] == False:
        vs ="False ✅"
     else:
