@@ -181,7 +181,7 @@ def chk(update,context):
 """)
         Sendmessage(chat_id , text)
     if 'card' not in w:
-       w['card']['three_d_secure_usage']['supported'] == False
+       w['card']['three_d_secure_usage']['supported'] = False
        vs ="False"
     if w['card']['three_d_secure_usage']['supported'] == False:
        vs ="False ✅"
