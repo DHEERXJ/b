@@ -221,8 +221,7 @@ def chk(update,context):
             vs="True ❌"
         if "invalid_cvc" or "incorrect_cvc" in b:
             text = (f"""
-{dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
-STATUS {crs} #ApprovedCCN \n MSG {crs} {msg} \n erdk {b} \n VBV[3D] {crs} {vs} \n TOOK: {toc - tic:0.4f}s \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
+{dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} #ApprovedCCN \n MSG {crs} {msg} \n VBV[3D] {crs} {e} \n TOOK: {toc - tic:0.4f}s \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
             Sendmessage(chat_id , text)
         elif "Unrecognized request URL" in b:
