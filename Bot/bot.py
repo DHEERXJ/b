@@ -164,7 +164,7 @@ def chk(update,context):
     cvv=i[3]
     url = 'https://api.stripe.com/v1/payment_methods'
     headers = {
-        'Authorization': 'Bearer {sk_chg}',
+        'Authorization': 'Bearer' + " " + global sk_chg,
         'Content-Type': 'application/x-www-form-urlencoded'
     }
     data = {
@@ -192,7 +192,7 @@ def chk(update,context):
         #second request
         url = 'https://api.stripe.com/v1/payment_intents'
         headers = {
-            'Authorization': 'Bearer {sk_chg}',
+            'Authorization': 'Bearer' + " " + global sk_chg,
             'Content-Type': 'application/x-www-form-urlencoded'
         }
         data = {
