@@ -219,18 +219,13 @@ def chk(update,context):
                 vs="True ❌"
         else:
             vs="True ❌"
-        if "invalid_cvc" or "incorrect_cvc" in response.text:
+        if "invalid_cvc" or "incorrect_cvc" in b:
             text = (f"""
 {dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
-STATUS {crs} #ApprovedCCN \n
-MSG {crs} {msg} \n
-VBV[3D] {crs} {vs} \n
-TOOK: {toc - tic:0.4f}s\n
-CHECKED BY @ASURCCWORLDBOT \n
-Used by @{userid}
+STATUS {crs} #ApprovedCCN \n MSG {crs} {msg} \n erdk {b} \n VBV[3D] {crs} {vs} \n TOOK: {toc - tic:0.4f}s \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
             Sendmessage(chat_id , text)
-        elif "Unrecognized request URL" in response.text:
+        elif "Unrecognized request URL" in b:
             text = ("[UPDATE] PROXIES ERROR")
             Sendmessage(chat_id , text)
         elif response.status_code == 200:
