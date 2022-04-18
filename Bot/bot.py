@@ -184,40 +184,39 @@ def chk(update,context):
         text = (f"""
 {wdia} Error {crs} {w["error"]["code"]} \n Response {crs} {w["error"]["decline_code"]} \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
         Sendmessage(chat_id , text)
-	
-    if 'card' in w:
-        if w['card']['three_d_secure_usage']['supported'] == True:
-            vs ="False ✅"
+    else:
+        #second request
+        url = 'https://api.stripe.com/v1/payment_intents'
+        headers = {
+            'Authorization': 'Bearer {sk_chg}',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        data = {
+            'amount': '60',
+            'currency': 'usd',
+            'payment_method_types[]': 'card',
+            'description': 'Asur Donation',
+            'payment_method': w["id"],
+            'confirm': 'true',
+            'off_session': 'true'
+        }
+        response = requests.post(url, headers=headers, data=data)
+        b=response.text
+        e=json.loads(b)
+        if "error" not in e:
+            msg = "CCN or CVV LIVE!"
+        else:
+            msg = e["error"]["message"]
+        toc = time.perf_counter()
+        if 'card' in w:
+            if w['card']['three_d_secure_usage']['supported'] == True:
+                vs ="False ✅"
+            else:
+                vs="True ❌"
         else:
             vs="True ❌"
-    else:
-        vs="True ❌"
-
-    #second request
-    url = 'https://api.stripe.com/v1/payment_intents'
-    headers = {
-        'Authorization': 'Bearer {sk_chg}',
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-    data = {
-        'amount': '60',
-        'currency': 'usd',
-        'payment_method_types[]': 'card',
-        'description': 'Asur Donation',
-        'payment_method': w["id"],
-        'confirm': 'true',
-        'off_session': 'true'
-    }
-    response = requests.post(url, headers=headers, data=data)
-    b=response.text
-    e=json.loads(b)
-    if "error" not in e:
-        msg = "CCN or CVV LIVE!"
-    else:
-        msg = e["error"]["message"]
-    toc = time.perf_counter()
-    if "invalid_cvc" or "incorrect_cvc" in response.text:
-        text = (f"""
+        if "invalid_cvc" or "incorrect_cvc" in response.text:
+            text = (f"""
 ✅CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
 STATUS {crs} #ApprovedCCN \n
 MSG {crs} {msg} \n
@@ -226,12 +225,12 @@ TOOK: {toc - tic:0.4f}s\n
 CHECKED BY @ASURCCWORLDBOT \n
 Used by @{userid}
 """)
-        Sendmessage(chat_id , text)
-    elif "Unrecognized request URL" in response.text:
-        text = ("[UPDATE] PROXIES ERROR")
-        Sendmessage(chat_id , text)
-    elif response.status_code == 200:
-        text = (f"""
+            Sendmessage(chat_id , text)
+        elif "Unrecognized request URL" in response.text:
+            text = ("[UPDATE] PROXIES ERROR")
+            Sendmessage(chat_id , text)
+        elif response.status_code == 200:
+            text = (f"""
 ✔️CC➟ <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
 STATUS ➟ #ApprovedCVV \n
 Response -» Successfully Charged 1$ ✅ \n
@@ -241,22 +240,22 @@ TOOK: {toc - tic:0.4f}s\n
 CHECKED BY @ASURCCWORLDBOT \n
 Used by @{userid}
 """)
-        Sendmessage(chat_id , text)
-    else:
-        if msg ==  "Your card has insufficient funds.":
-            msg = "Your card has insufficient funds ✅"
-            text=(f"""
-{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG 
-{crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
-Used by @{userid}
-""")
+            Sendmessage(chat_id , text)
         else:
-            text=(f"""
+            if msg ==  "Your card has insufficient funds.":
+                msg = "Your card has insufficient funds ✅"
+                text=(f"""
 {wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG 
 {crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
 Used by @{userid}
 """)
-        Sendmessage(chat_id , text)
+            else:
+                text=(f"""
+{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG 
+{crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
+Used by @{userid}
+""")
+            Sendmessage(chat_id , text)
 #########################################################################################################
 	
 def scraperdfnc(update, context):
