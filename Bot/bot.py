@@ -11,6 +11,7 @@ import string
 import time
 import json
 import math
+dia='✅'
 from collections import OrderedDict
 sk_chg='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'
 os.environ['TZ'] = 'America/Buenos_Aires'
@@ -148,6 +149,7 @@ def chk(update,context):
     tic = time.perf_counter()
     wdia ='❌'
     crs = '➟'
+    dia='✅'
     text =  update.message.text.split(' ', 1)
     maintxt=text[-1]
     i=maintxt.split("|")
@@ -217,7 +219,7 @@ def chk(update,context):
             vs="True ❌"
         if "invalid_cvc" or "incorrect_cvc" in response.text:
             text = (f"""
-✅CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
+{dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
 STATUS {crs} #ApprovedCCN \n
 MSG {crs} {msg} \n
 VBV[3D] {crs} {vs} \n
@@ -233,7 +235,7 @@ Used by @{userid}
             text = (f"""
 ✔️CC➟ <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code> \n
 STATUS ➟ #ApprovedCVV \n
-Response -» Successfully Charged 1$ ✅ \n
+Response -» Successfully Charged 1$ {dia} \n
 Gateway -» Stripe Charge 1$ \n
 VBV[3D] {crs} {vs}  \n
 TOOK: {toc - tic:0.4f}s\n
