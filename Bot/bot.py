@@ -185,6 +185,7 @@ def chk(update,context):
     if "error" in response.text:
         text = (f"""
 {wdia} Error {crs} {w["error"]["code"]} \n Response {crs} {w["error"]["decline_code"]} \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
+""")
         Sendmessage(chat_id , text)
     else:
         #second request
