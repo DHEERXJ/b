@@ -12,7 +12,7 @@ import time
 import json
 import math
 from collections import OrderedDict
-sk_chg='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'
+sk_chg='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'
 os.environ['TZ'] = 'America/Buenos_Aires'
 
 bot_token = os.environ.get('TG_BOT_TOKEN')
@@ -148,8 +148,6 @@ def chk(update,context):
     tic = time.perf_counter()
     wdia ='❌'
     crs = '➟'
-    vs="True ❌"
-    #############################
     text =  update.message.text.split(' ', 1)
     maintxt=text[-1]
     i=maintxt.split("|")
@@ -182,13 +180,18 @@ def chk(update,context):
 {wdia} SK-key expired {crs} Change SK key \n Sk-key {crs} <code>{skmains}</code> \n RESPONSE {crs} Testmode Charges Only \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
         Sendmessage(chat_id , text)
-    #if 'card' not in w:
-     #  w['card']['three_d_secure_usage']['supported'] = False
-      # vs ="False"
-    #if w['card']['three_d_secure_usage']['supported'] == False:
-      # vs ="False ✅"
-    #else:
-       #vs="True ❌"
+    if "error" in response.text:
+        text = (f"""
+{wdia} Error {crs} {w["error"]["code"]} \n Response {crs} {w["error"]["decline_code"]} \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
+        Sendmessage(chat_id , text)
+	
+    if 'card' in w:
+        if w['card']['three_d_secure_usage']['supported'] == True:
+            vs ="False ✅"
+        else:
+            vs="True ❌"
+    else:
+        vs="True ❌"
 
     #second request
     url = 'https://api.stripe.com/v1/payment_intents'
