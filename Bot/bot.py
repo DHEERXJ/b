@@ -182,10 +182,11 @@ def chk(update,context):
 {wdia} SK-key expired {crs} Change SK key \n Sk-key {crs} <code>{skmains}</code> \n RESPONSE {crs} Testmode Charges Only \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
         Sendmessage(chat_id , text)
-    if "error" in response.text:
+    if "error" in w:
         text = (f"""
-{wdia} Error {crs} {w["error"]["code"]} \n Response {crs} {w["error"]["decline_code"]} \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
+{wdia} Error {crs} {w["error"]["code"]} \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
 """)
+# \n Response {crs} {w["error"]["decline_code"]}
         Sendmessage(chat_id , text)
     else:
         #second request
