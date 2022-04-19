@@ -224,7 +224,7 @@ def chk(update,context):
 {dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code>
 STATUS {crs} #ApprovedCCN
 MSG {crs} {msg}
-VBV[3D] {crs} {e}
+VBV[3D] {crs} {vs}
 TOOK: {toc - tic:0.4f}s 
 CHECKED BY @ASURCCWORLDBOT
 Used by @{userid}
