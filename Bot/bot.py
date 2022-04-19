@@ -219,7 +219,7 @@ def chk(update,context):
                 vs="True ❌"
         else:
             vs="True ❌"
-        if "invalid_cvc" or "incorrect_cvc" in b:
+        if "incorrect_cvc" in b:
             text = (f"""
 {dia} CC {crs} <code>{cc[:7]}xxxxxxxxxx|{mes}|{ano}|{cvv}</code>
 STATUS {crs} #ApprovedCCN
@@ -249,14 +249,12 @@ Used by @{userid}
             if msg ==  "Your card has insufficient funds.":
                 msg = "Your card has insufficient funds ✅"
                 text=(f"""
-{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG 
-{crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
+{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG {crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
 Used by @{userid}
 """)
             else:
                 text=(f"""
-{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG 
-{crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
+{wdia} CC {crs} <code>{cc[:7]}xxxxxxxxx|{mes}|{ano}|{cvv}</code> \n STATUS {crs} Declined \n MSG {crs} {msg} \n TOOK: {toc - tic:0.4f} \n CHECKED BY @ASURCCWORLDBOT \n
 Used by @{userid}
 """)
             Sendmessage(chat_id , text)
