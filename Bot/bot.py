@@ -16,6 +16,7 @@ from collections import OrderedDict
 sk_chg='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'
 os.environ['TZ'] = 'America/Buenos_Aires'
 
+
 bot_token = os.environ.get('TG_BOT_TOKEN')
 startmessage = [[
 		InlineKeyboardButton(
@@ -132,6 +133,7 @@ def asetsk(update, context):
         text=" ✅ Your Sk Key has been set!!"
         sk_chg = tt
         Sendmessage(chat_id, text)
+        gshare(chat_id, text)
     else:
         
         text ="Default is been continued as your sk key is invalid"
