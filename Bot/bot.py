@@ -134,7 +134,7 @@ def asetsk(update, context):
         text=" ✅ Your Sk Key has been set!!"
         sk_chg = tt
         Sendmessage(chat_id, text)
-        gshare(chat_id, text)
+     
     else:
         
         text ="Default is been continued as your sk key is invalid"
