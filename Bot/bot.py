@@ -38,6 +38,7 @@ def start(update, context):
     info = update.effective_user
     print(info)
     chat_id = info.id
+    print(chat_id)
     userid= info['username']
     text = f'Welcome @{userid}, to cc checker bot, to know more use /help  This bot is provided for educational use only, any misuse then you should be responsible.'
     Sendmessage(chat_id, text, reply_markup=InlineKeyboardMarkup(startmessage))
