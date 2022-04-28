@@ -19,7 +19,6 @@ def Sendmessage(chat_id, text,reply_markup=None):
     except Exception as e:
         logger.info(e)
         raise UserWarning
-def
 
 def Editmessage(chat_id, text, msg_id, reply_markup=None):
     try:
