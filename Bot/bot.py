@@ -93,16 +93,16 @@ def bin(update, context):
                 p=("Valid Bin! {} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n • Country: {} {} \n • Bank: {} \n • Scheme: {} \n • Type: {} \n • Currency: {} \n━━━━━━━━━━━━━━━ \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}")
                 text=p.format(dia ,ab[:6] ,res["country"]["name"],res["country"]["emoji"],res["bank"]["name"],bb,dd,res["country"]["currency"],userid)
                 Sendmessage(chat_id, text)
-           else:
-               chat_id = update.message.chat_id
-               info = update.effective_user
-               chat_id = info.id
-               userid= info['username']
-               ab=text[-1]
-               wdia='❌'
-               p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n ━━━━━━━━━━━━━━━ \n👤 Checked By: @ASURCCWORLDBOT\n  Used By @{}"
-               text = p.format(wdia,ab[:6],userid)
-               Sendmessage(chat_id, text)
+            else:
+                chat_id = update.message.chat_id
+                info = update.effective_user
+                chat_id = info.id
+                userid= info['username']
+                ab=text[-1]
+                wdia='❌'
+                p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n ━━━━━━━━━━━━━━━ \n👤 Checked By: @ASURCCWORLDBOT\n  Used By @{}"
+                text = p.format(wdia,ab[:6],userid)
+                Sendmessage(chat_id, text)
              
         else:
             chat_id = update.message.chat_id
@@ -114,11 +114,11 @@ def bin(update, context):
             p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}"
             text = p.format(wdia,ab[:6],userid)
             Sendmessage(chat_id, text)
-except KeyError as err:
-    wdia='❌'
-    p = "{}Invaild Bin!!"
-    text = p.format(wdia)
-    Sendmessage(chat_id, text)
+    except KeyError as err:
+        wdia='❌'
+        p = "{}Invaild Bin!!"
+        text = p.format(wdia)
+        Sendmessage(chat_id, text)
 ################################################################################################################################
 def asetsk(update, context):
     chat_id = update.message.chat_id
