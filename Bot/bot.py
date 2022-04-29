@@ -71,56 +71,54 @@ def bin(update, context):
     chat_id = info.id
     userid= info['username']
     text =  update.message.text.split(' ', 1)
-    if text[-1].isdigit():
-        r = requests.get("https://lookup.binlist.net/" + str(text[1][:6]))
-        url=r.text
-        if len(url)>5:
-             res=json.loads(url)
-             ab=text[-1]
-
-             if "bank" not in res:
-                  res["bank"] = {'name': 'Unavailable'}
-
-             if "country" not in res:
-                  res["country"] = {"name": "Unavailable" , "emoji": " " , "currency": "--"}
-
-             elif "type" not in res:
-                  res["type"] = "Unavailable"
+    try:
+        if text[-1].isdigit() and len(text[-1]) >=6:
+            r = requests.get("https://lookup.binlist.net/" + str(text[1][:6]))
+            url=r.text
+            if len(url)>5:
+                res=json.loads(url)
+                ab=text[-1]
+                if "bank" not in res:
+                    res["bank"] = {'name': 'Unavailable'}
+                if "country" not in res:
+                    res["country"] = {"name": "Unavailable" , "emoji": " " , "currency": "--"}
+                elif "type" not in res:
+                    res["type"] = "Unavailable"
 	
-             bb=res["scheme"]
-             dia='✅'
+                bb=res["scheme"]
+                dia='✅'
+                dd=res["type"]
+                true,false=True,False
+                dd=res["type"]
+                p=("Valid Bin! {} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n • Country: {} {} \n • Bank: {} \n • Scheme: {} \n • Type: {} \n • Currency: {} \n━━━━━━━━━━━━━━━ \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}")
+                text=p.format(dia ,ab[:6] ,res["country"]["name"],res["country"]["emoji"],res["bank"]["name"],bb,dd,res["country"]["currency"],userid)
+                Sendmessage(chat_id, text)
+           else:
+               chat_id = update.message.chat_id
+               info = update.effective_user
+               chat_id = info.id
+               userid= info['username']
+               ab=text[-1]
+               wdia='❌'
+               p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n ━━━━━━━━━━━━━━━ \n👤 Checked By: @ASURCCWORLDBOT\n  Used By @{}"
+               text = p.format(wdia,ab[:6],userid)
+               Sendmessage(chat_id, text)
              
-             
-             
-             dd=res["type"]
-            
-             true,false=True,False
-             
-             dd=res["type"]
-             p=("Valid Bin! {} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n • Country: {} {} \n • Bank: {} \n • Scheme: {} \n • Type: {} \n • Currency: {} \n━━━━━━━━━━━━━━━ \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}")
-             text=p.format(dia ,ab[:6] ,res["country"]["name"],res["country"]["emoji"],res["bank"]["name"],bb,dd,res["country"]["currency"],userid)
-             Sendmessage(chat_id, text)
         else:
-             chat_id = update.message.chat_id
-             info = update.effective_user
-             chat_id = info.id
-             userid= info['username']
-             ab=text[-1]
-             wdia='❌'
-             p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n ━━━━━━━━━━━━━━━ \n👤 Checked By: @ASURCCWORLDBOT\n  Used By @{}"
-             text = p.format(wdia,ab[:6],userid)
-             Sendmessage(chat_id, text)
-             
-    else:
-        chat_id = update.message.chat_id
-        info = update.effective_user
-        chat_id = info.id
-        userid= info['username']
-        ab=text[-1]
-        wdia='❌'
-        p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}"
-        text = p.format(wdia,ab[:6],userid)
-        Sendmessage(chat_id, text)
+            chat_id = update.message.chat_id
+            info = update.effective_user
+            chat_id = info.id
+            userid= info['username']
+            ab=text[-1]
+            wdia='❌'
+            p = "Not Valid Bin!{} \n ━━━━━━━━━━━━━━━  \n • Bin: {} \n 👤 Checked By: @ASURCCWORLDBOT\n Used By @{}"
+            text = p.format(wdia,ab[:6],userid)
+            Sendmessage(chat_id, text)
+except KeyError as err:
+    wdia='❌'
+    p = "{}Invaild Bin!!"
+    text = p.format(wdia)
+    Sendmessage(chat_id, text)
 ################################################################################################################################
 def asetsk(update, context):
     chat_id = update.message.chat_id
