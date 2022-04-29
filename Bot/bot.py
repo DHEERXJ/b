@@ -275,7 +275,7 @@ def duty(update,context):
     crs = '➟'
     dia='✅'
     text =  update.message.text.split(' ', 1)
-    if text[0][:4] == "/chk":
+    if text[0][:4] == "!chk":
         maintxt=text[-1]
         paytxt=text[0][4:]
         i=maintxt.split("|")
