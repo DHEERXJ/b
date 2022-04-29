@@ -277,7 +277,8 @@ def duty(update,context):
     text =  update.message.text.split(' ', 1)
     if text[0][:4] == "!chk":
         maintxt=text[-1]
-        paytxt=text[0][4:]
+        payyy=text[0][4:]
+        paytxt = int(payyy)
         i=maintxt.split("|")
         cc=i[0]
         skq1=sk_chg[:16]
