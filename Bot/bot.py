@@ -134,13 +134,17 @@ def asetsk(update, context):
         text=" ✅ Your Sk Key has been set!!"
         sk_chg = tt
         Sendmessage(chat_id, text)
-     
     else:
-        
         text ="Default is been continued as your sk key is invalid"
         Sendmessage(chat_id, text)
-    
-             
+def ashowsk(update, context):
+    chat_id = update.message.chat_id
+    info = update.effective_user
+    chat_id = info.id
+    global sk_chg
+    text = sk_chg
+    Sendmessage(chat_id, text)
+
 
 ################################################################################################################################
 
