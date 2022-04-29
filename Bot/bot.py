@@ -297,6 +297,7 @@ def main():
     dp.add_handler(CommandHandler("botinfo", botinfo))
     dp.add_handler(CommandHandler("asetsk", asetsk))
     dp.add_handler(CommandHandler("botcmds", botcmds))
+    dp.add_handler(CommandHandler("ashowsk", ashowsk))
     dp.add_handler(CommandHandler("chk", chk))
     dp.add_handler(CommandHandler("bin", bin))
     dp.add_handler(CommandHandler("botstart", botstart))
