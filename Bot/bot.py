@@ -408,7 +408,7 @@ def main():
         use_context=True
     )
     dp = updater.dispatcher
-    #dp.add_handler(MessageHandler(Filters.text & ~Filters.command, duty))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, duty))
     dp.add_handler(CommandHandler("scrape", scraperdfnc))
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
