@@ -505,10 +505,16 @@ Used by @{userid}
 """)
                 Sendmessage(chat_id , text)
     elif text[0] == "!mass":
+        acountt=0
         if '\n' in text[1]:
             simple = combos_spilt(text[1])
             for i in simple:
+                acountt+=1
                 mass_helper(chat_id,sk_chg,userid, i)
+                if acountt==20:
+                    break
+                else:
+                    continue
             Sendmessage(chat_id, 'Ｃｏｍｐｌｅｔｅｄ')
         else:
             mass_helper(chat_id, text[1])
