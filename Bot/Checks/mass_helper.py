@@ -4,7 +4,7 @@ import requests
 from message import logger, Sendmessage, Editmessage
 from datetime import date
 
-    def mass_helper(chat_id,combo):
+def mass_helper(chat_id,combo):
     status = Sendmessage(chat_id, '<i>Checking....</i>')
     chat_id = update.message.chat_id
     info = update.effective_user
@@ -27,7 +27,6 @@ from datetime import date
     except IndexError:
         Editmessage(chat_id, 'Enter Valid CCs Format!!', status)
         return
-        
         url = 'https://api.stripe.com/v1/payment_methods'
         headers = {
         'Authorization': 'Bearer' + " " +sk_chg,
@@ -47,7 +46,7 @@ from datetime import date
             text = (f"""
     {wdia} SK-key expired {crs} Change SK key \n Sk-key {crs} <code>{skmains}</code> \n RESPONSE {crs} Testmode Charges Only \n ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
     """)
-            Sendmessage(chat_id , text)
+            Editmessage(chat_id, text, status)
         if "error" in w:
             text = (f"""
 {wdia} Error {crs} {w["error"]["code"]} \n  ━━━━━━━━━━━━━━━ \n CHECKED BY @ASURCCWORLDBOT \n Used by @{userid}
