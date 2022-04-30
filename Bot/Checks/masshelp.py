@@ -1,14 +1,11 @@
 
     #############################################################
 import requests
-from message import logger, Sendmessage, Editmessage
+from message import logger, Sendmessage, Editmessage, logger
 from datetime import date
 
-def mass_helper(chat_id,combo):
-    chat_id = update.message.chat_id
-    info = update.effective_user
-    chat_id = info.id
-    userid= info['username']
+def mass_helper(chat_id ,combo):
+
     status = Sendmessage(chat_id, '<i>Checking....</i>')
     tic = time.perf_counter()
     wdia ='❌'
