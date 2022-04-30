@@ -45,6 +45,9 @@ def start(update, context):
     Sendmessage(chat_id, text, reply_markup=InlineKeyboardMarkup(startmessage))
     return
 
+def combos_spilt(combos):
+    split = combos.split('\n')
+    return split
     
 ####################################################################################################################################3
 # help botstart botcmds botinfo bin
