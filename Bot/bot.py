@@ -385,7 +385,7 @@ Used by @{userid}
 Used by @{userid}
 """)
                 Sendmessage(chat_id , text)
-    elif text[0][:4] == "!mass":
+    elif text[0] == "!mass":
         if '\n' in text[1]:
             simple = combos_spilt(text[1])
             for i in simple:
