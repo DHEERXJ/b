@@ -2,6 +2,7 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ( CommandHandler, Filters, MessageHandler, Updater)
 from message import Editmessage, Sendmessage, logger
+from Checks.masshelp import mass_helper
 from Miscellaneous.Scraper import pastebin, text_scraper, throwbin, ghostbin
 import os
 import requests
@@ -384,7 +385,15 @@ Used by @{userid}
 Used by @{userid}
 """)
                 Sendmessage(chat_id , text)
-#########################################################################################################
+    elif text[0][:4] == "!mass":
+        if '\n' in text[1]:
+            simple = combos_spilt(text[1])
+            for i in simple:
+                mass_helper(chat_id, i)
+            Sendmessage(chat_id, 'Ｃｏｍｐｌｅｔｅｄ')
+        else:
+            mass_helper(chat_id, text[1])
+#####################################################################################################
 	
 def scraperdfnc(update, context):
     msg = update.message.text
