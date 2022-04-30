@@ -268,11 +268,7 @@ Used by @{userid}
             Sendmessage(chat_id , text)
 ######################################################################################################################
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$5555555555555555555555555
-def mass_helper(update ,combo):
-    chat_id = update.message.chat_id
-    info = update.effective_user
-    chat_id = info.id
-    userid= info['username']
+def mass_helper(chat_id,sk_chg ,userid,combo):
     status = Sendmessage(chat_id, '<i>Checking....</i>')
     tic = time.perf_counter()
     wdia ='❌'
@@ -512,7 +508,7 @@ Used by @{userid}
         if '\n' in text[1]:
             simple = combos_spilt(text[1])
             for i in simple:
-                mass_helper(chat_id, i)
+                mass_helper(chat_id,sk_chg,userid, i)
             Sendmessage(chat_id, 'Ｃｏｍｐｌｅｔｅｄ')
         else:
             mass_helper(chat_id, text[1])
