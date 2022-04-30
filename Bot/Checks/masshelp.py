@@ -5,11 +5,11 @@ from message import logger, Sendmessage, Editmessage
 from datetime import date
 
 def mass_helper(chat_id,combo):
-    status = Sendmessage(chat_id, '<i>Checking....</i>')
     chat_id = update.message.chat_id
     info = update.effective_user
     chat_id = info.id
     userid= info['username']
+    status = Sendmessage(chat_id, '<i>Checking....</i>')
     tic = time.perf_counter()
     wdia ='❌'
     crs = '➟'
@@ -24,9 +24,6 @@ def mass_helper(chat_id,combo):
         mes=i[1]
         ano=i[2]
         cvv=i[3]
-    except IndexError:
-        Editmessage(chat_id, 'Enter Valid CCs Format!!', status)
-        return
         url = 'https://api.stripe.com/v1/payment_methods'
         headers = {
         'Authorization': 'Bearer' + " " +sk_chg,
@@ -123,3 +120,8 @@ Used by @{userid}
 Used by @{userid}
 """)
                 Editmessage(chat_id, text, status)
+
+    except IndexError:
+        Editmessage(chat_id, 'Enter Valid CCs Format!!', status)
+        return
+        
