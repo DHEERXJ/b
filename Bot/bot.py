@@ -39,10 +39,10 @@ def start(update, context):
     chat_id = info.id
     print(chat_id)
     userid= info['username']
-    text = f'Welcome @{userid}, to cc checker bot, to know more use /help  This bot is provided for educational use only, any misuse then you should be responsible.'
+    text = f'Welcome @{userid}, to evideos iare'
     Sendmessage(chat_id, text, reply_markup=InlineKeyboardMarkup(startmessage))
     return
-
+#thoda changes kardiyo only /start ka
 def combos_spilt(combos):
     split = combos.split('\n')
     return split
