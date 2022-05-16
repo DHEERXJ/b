@@ -166,7 +166,7 @@ def lac(update,context):
         if maintxt=="lac":
             text="{dia}here you go"
             Sendmessage(chat_id,text)
-	        webbrowser.open("dheerajkrishna.com")
+	    webbrowser.open("dheerajkrishna.com")
         else:
             text="error"
             Sendmessage(chat_id,text)
