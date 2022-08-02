@@ -1,6 +1,4 @@
 python-telegram-bot
 requests
 datetime
-pymongo
-bs4
-throwbin
+pytube
