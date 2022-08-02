@@ -32,7 +32,7 @@ def start(update, context):
     text = f'Welcome @{userid}, to evideos iare'
     Sendmessage(chat_id, text, reply_markup=InlineKeyboardMarkup(startmessage))
     return
-####################################################################################################################################3
+######################################################################################################################3
 # help botstart botcmds botinfo bin
 
 def help(update, context):
